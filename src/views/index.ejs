@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="logo">
+                <img src="logo2.png" alt="">
+            </div>
+
+            <div class="addContact">
+                <span>Add Contact</span><i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+    </header>
+   
+
+    <%if(results.length>0){%>
+        <%let id=0%>
+        <div class="tableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <%results.forEach(result=>{%>
+                    <tr class="tableRow">
+                        <td>
+                            <%=id++%>
+                        </td>
+                        <td>
+                            <%=result.name%>
+                        </td>
+                        <td>
+                            <%=result.email%>
+                        </td>
+                        <td>
+                            <%=result.phone%>
+                        </td>
+                        <td>
+                            <%=result.address%>
+                        </td>
+                        <td class="actions">
+                            <a href="/delete/<%=result.id%>" class="delete">Delete<i class="fa-regular fa-trash-can"></i></i></a>
+                            <a href="/editContact/<%=result.id%>" class="edit">Edit<i class="fa-regular fa-pen-to-square"></i></a>
+                        </td>
+                    </tr>
+                    <%})%>
+            </table>
+        </div>
+    <%}else{%>
+        <div class="containerMessage">
+            <h1 class="animate__animated animate__bounce animate__infinite">No contact was added. Try to add some and see how it works!</h1>
+        </div>
+    <%}%>    
+
+                <div class="addContactContainer">
+                    <form action="/add" method="post">
+                        <input type="text" placeholder="Name" name="name" id="name">
+                        <input type="email" placeholder="Email" name="email" id="email">
+                        <input type="text" placeholder="Phone" name="phone" id="phone">
+                        <input type="text" placeholder="Address" name="address" id="address">
+
+                        <button>Add contact</button>
+                    </form>
+                </div>
+                <script src="index.js"></script>
+</body>
+
+</html>

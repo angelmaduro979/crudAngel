@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="/editContact.css">
+</head>
+<body>
+    <header>
+        <div class="headerContainer">
+            <div class="logo">
+                <a href="/"><img src="/logo2.png" alt="indexPic"></a>
+            </div>
+
+        </div>
+    </header>
+    <div class="addContactContainer2">
+        <form action="/editCustomerPost/<%= result.id%>" method="post">
+            <input type="text" placeholder="Name" name="name" value="<%=result.name%>">
+            <input type="email" placeholder="Email" name="email" value="<%=result.email%>">
+            <input type="text" placeholder="Phone" name="phone" value="<%=result.phone%>">
+            <input type="text" placeholder="Address" name="address" value="<%=result.address%>">
+
+            <button>Add contact</button>
+        </form>
+    </div>
+</body>
+</html>
